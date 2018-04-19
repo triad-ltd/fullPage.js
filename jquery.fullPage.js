@@ -481,6 +481,16 @@
         }
 
         /**
+         * A hacky way to handle #2816, in combination with afterSlideLoad
+         * Trigger scrollbar rebuild after slide load.
+         */
+        function reScrollbar() {
+            if(options.scrollOverflow){
+                scrollBarHandler.createScrollBarForAll();
+            }
+        }
+
+        /**
         * Turns fullPage.js to normal scrolling mode when the viewport `width` or `height`
         * are smaller than the set limit values.
         */
@@ -526,6 +536,7 @@
             FP.reBuild = reBuild;
             FP.setResponsive = setResponsive;
             FP.destroy = destroy;
+            FP.reScrollbar = reScrollbar; // A hacky way to handle #2816
 
             //functions we want to share across files but which are not
             //mean to be used on their own by developers
